@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather web</title>
+  <style>cd test/
+  
+    .midheader li:hover {
+      font-weight: bold;
+      color: white;
+    }
+  
+    @media screen and (max-width:380px) { 
+     .mainContainer
+     {
+      width: 0;
+     }
+     .mainContainer2
+     {
+      margin-top: 1386px;
+      margin-bottom: -100px;
+      margin-left: 30px;
+     }
+     .header
+     {
+      font-family: math;
+    margin-left: 31px;
+    color: white;
+    width: 316px;
+    margin-top: -20px;
+     }
+     .header h1
+     {
+      margin-left: 0;
+      width: 318px;
+     }
+     .midheader
+     {
+      width: 200px;
+      margin-left: 32px;
+     }
+     #city
+     {
+      position: absolute;
+    top: 182px;
+    left: 36px;
+    margin-left: 11px;
+     }
+     #submit
+     {
+      position: absolute;
+    top: 206px;
+    left: 275px;
+     }
+     #Error
+     {
+    position: absolute;
+    top: 256px;
+    left: -258px;
+     }
+     #temp
+     {
+      font-size: 100px;
+      margin-left: 139px;
+     }
+     #cityName
+     {
+      margin-top: 8px ;
+      font-size: 50px;
+      margin-left: 70px;
+     }
+     #txt
+     {
+      width: 135px;
+      position: absolute;
+    left: 125px;
+     }
+      #img
+      {
+        margin-top: 35px;
+    margin-left: 125px;
+      }  
+      .weather
+      {
+        flex-direction: column;
+      }
+      #weatherStatus
+      {
+        
+    margin-left: 125px;
+      }
+      #about
+      {
+        margin-left: -54px;
+        width: 288px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body
+id="weatherBackground" style="height: 100vh;display: flex;justify-content: center;align-items: center;display: flex;background: linear-gradient(100deg, skyblue, transparent);;">
+  
+<!-- background-image: url(xxxx.jpg) -->
+<!-- main container is here -->
+  <div class="mainContainer"
+    style="height: 550px;max-width: 775px;">
+    <div class="topheader" style="display: flex;justify-content: space-between;">
+      <div class="header">
+        <h1
+          style="font-family: math; margin-left: 14px;background: linear-gradient(45deg, black, transparent);color: white;">
+          Weather Web Service</h1>
+      </div>
+      <div class="searchBar">
+        <nav class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+            <form class="d-flex" role="search">
+              <input id="city" class="form-control me-2" type="search" placeholder="Search For Your City" aria-label="Search"
+                style="margin-left:50px;margin-top: 24px;height: 29px;outline: none;border: 2px solid;border-radius: 4px;">
+              <button id="submit" class="btn btn-outline-success" type="submit"
+                style="height: 29px;margin-right: 10px;background: darkcyan;color: white;border: 1px solid black;border-radius: 7px;">Search</button>
+            </form>
+        </nav>
+      </div>
+    </div>
+    <div class="midheader" style="display: flex;list-style: none;font-family: sans-serif;">
+      <a style=" text-decoration: none; color: black;" href="">
+        <li style="margin-left: 14px;">Home</li>
+      </a> 
+        <li id="About" style="margin-left: 10px;text-decoration: none; color: black;">About</li>
+      <a style=" text-decoration: none; color: black;" href="file:///C:/Users/DELL/3D%20Objects/web%20projects/my%20weather/Rateme.html">
+        <li style="margin-left: 10px;"><a style="text-decoration: none;color: black;" href="file:///C:/Users/DELL/3D Objects/web projects/my weather/Rateme.html">RateMe!</a></li>
+      </a>
+      <!-- div for displaying the error massage -->
+      <div id="Error" style="background: #e911115c;height: 23px;width: 237px;margin-left: 346px;margin-top: -17px;text-align: center;font-family: monospace;font-size: 16px;color: white;display: none;" class="Error"></div>
+    </div>
+    <div class="weather" style="margin-top: 285px;margin-left: 27px;display:flex;list-style:none;">
+      <li style="font-size: 100px;font-family: fantasy;"><span id="temp">00</span><span
+          style="font-size:20px;font-family: math;">&#8451</span></li>
+      <li style="font-size: 40px;margin-top: 36px;margin-left: 12px;font-family: sans-serif;"><span id="cityName"></span><span style="margin-left: 2px;margin-top: 5px;font-size: 15px;font-family: monospace;font-weight: bold;"><br><body onload="startTime()"><div id="txt" style="margin-left: 2px;margin-top: 5px;"></div></span></li>
+      <li style="margin-top: 45px;margin-left: 51px;"><span style="margin-left: 8px;
+        font-size: 27px;
+        font-weight: bolder;
+        text-decoration: underline;">Status</span><span></span><br><div id="weatherStatus" style="font-size: 19px;
+        font-weight: bold;
+        font-family: monospace;
+        width: 90px;
+        text-align: center;"></div> </li>
+    </div>
+  </div>
+  </div>
+  <div class="mainContainer2"
+    style="display:none;height: 550px;width: 390px;background: #00000061;font-size: 20px;display: flex;flex-direction: column;border-radius: 15px;margin-left: 25px;">
+    <h1 style="color: darkkhaki;font-family: math;font-size: 25px;text-decoration: underline; text-align: center;">Common
+      Cities Weather</h1>
+
+    <div class="table-container">
+
+      <div id="Belgaum" style="height: 26px;color: white;border-bottom: 1px solid #e1e7f121;font-size: 12px;">
+        <pre
+          style="font-family: revert; margin-left: 10px;margin-left: 10px;"><span>city     FeelsLike    Humidity    MinTemp    MaxTemp</span><span></span></pre>
+      </div>
+
+
+      <div id="Belgaum" style="height: 26px;color: white;border-bottom: 1px solid #e1e7f121;font-size: 12px;">
+        <pre
+          style="font-family: revert; margin-left: 10px;margin-left: 10px;">Delhi        <span id="temp_Delhi"></span>&#8451         <span id="humidity_Delhi"></span>        <span id="min_temp_Delhi"></span>        <span id="max_temp_Delhi"></span></pre>
+      </div>
+      <div id="Bengaluru" style="height: 26px;color: white;border-bottom: 1px solid #e1e7f121;font-size: 12px;">
+        <pre
+          style="font-family: revert; margin-left: 10px;margin-left: 10px;">Mumbai       <span id="temp_Mumbai"></span>&#8451         <span id="humidity_Mumbai"></span>         <span id="min_temp_Mumbai"></span>        <span id="max_temp_Mumbai"></span></pre>
+      </div>
+      <div id="Delhi" style="height: 26px;color: white;border-bottom: 1px solid #e1e7f121;font-size: 12px;">
+        <pre
+          style="font-family: revert; margin-left: 10px;margin-left: 10px;">Bengaluru    <span id="temp_Bengaluru"></span>&#8451         <span id="humidity_Bengaluru"></span>         <span id="min_temp_Bengaluru"></span>        <span id="max_temp_Bengaluru"></span></pre>
+      </div>
+      <div id="Mysore" style="height: 26px;color: white;border-bottom: 1px solid #e1e7f121;font-size: 12px;">
+        <pre
+          style="font-family: revert; margin-left: 10px;margin-left: 10px;">Chennai      <span id="temp_Chennai"></span>&#8451         <span id="humidity_Chennai"></span>         <span id="min_temp_Chennai"></span>        <span id="max_temp_Chennai"></span></pre>
+      </div>
+    </div>
+
+    <h4 style="color: #1ec9c9;font-family: math;font-size: 18px; text-align: center;">More Details Of Current Searched City</h4>
+
+    <div class="table-container2" style="margin-top: -11px;">
+
+      <div id="Belgaum" style="height: 26px;color: white;border-bottom: 1px solid #e1e7f121;font-size: 17px;">
+        <pre
+          style="font-family: revert; margin-left: 10px;margin-left: 53px;">Feels Like             <span id="feels_like"></span></pre>
+      </div>
+      <div id="Bengaluru" style="height: 26px;color: white;border-bottom: 1px solid #e1e7f121;font-size: 17px;">
+        <pre
+          style="font-family: revert; margin-left: 10px;margin-left: 53px;">Humidity               <span id="humidity"></span></pre>
+      </div>
+      <div id="Delhi" style="height: 26px;color: white;border-bottom: 1px solid #e1e7f121;font-size: 17px;">
+        <pre
+          style="font-family: revert; margin-left: 10px;margin-left: 53px;">Minimum Temp           <span id="min_temp"></span></pre>
+      </div>
+      <div id="Mysore" style="height: 26px;color: white;border-bottom: 1px solid #e1e7f121;font-size: 17px;">
+        <pre
+          style="font-family: revert; margin-left: 10px;margin-left: 53px;">Maximum Temp           <span id="max_temp"></span></pre>
+      </div>
+      
+
+  </div>
+  <div id="about" style="display: none;height: 185px;
+  width: 600px;
+  background: azure;
+  padding: 10px;
+  position: absolute;
+  left: 108px;
+  top: 158px;
+  border: 5px solid black;
+  border-radius: 13px;
+  overflow: auto;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    <p style="text-indent: 50px;">
+      "Hey there! I'm Prasad Badiger, a student at KLS GIT, specializing in electronics and communication. I've always been fascinated by the intersection of technology and real-world applications. That's what led me to embark on the journey of creating a weather web service website.
+      <p style="text-indent: 50px;">But this isn't just about me and my project—it's about creating a community. I'd love to hear your thoughts, suggestions, or just have a chat! Feel free to reach out to me via,
+      <li>Mail : prasadbadiger441@gmail.com</li>
+      <li>Instagram : <a href="https://www.instagram.com/im.mrprasad/?next=%2F">im.mrprasad</a></li>
+      <li>LinkedIn : <a href="https://www.linkedin.com/in/prasad-badiger-08b036241/">linked.in</a></li>
+
+      
+      for behind-the-scenes looks and project updates.
+      </p>
+    </p>
+  </div>
+</body>
+<script>
+    function startTime() {
+    const today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML = "Time : " + h + ":" + m + ":" + s;
+    setTimeout(startTime, 1000);
+  }
+
+  function checkTime(i) {
+    if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+    return i;
+  }
+
+  
+
+//main weather
+  const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'f0a135c527mshd08f19bb895cb09p1af7c3jsnbea5c085982a',
+		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+	}
+};
+const getWeather=(city)=>{
+
+	cityName.innerHTML=city;
+	
+	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+city, options)
+	.then(response => response.json())
+	.then((response) => {
+		
+		
+		temp.innerHTML = response.temp
+    feels_like.innerHTML = response.feels_like
+    humidity.innerHTML = response.humidity
+    min_temp.innerHTML = response.min_temp
+		max_temp.innerHTML = response.max_temp
+
+    console.log(response);
+
+    //if location not exist then displaying a massage...
+    let Error=document.getElementById("Error");
+
+    if(temp.innerHTML=="undefined")
+    {
+      Error.style.display="block";
+      Error.innerHTML="Sorry Location Not Found!";
+      Error.style.backgroundColor=" #e911115c";
+    }
+    else
+    {
+      Error.style.display="block";
+      Error.innerHTML="Explore More!";
+      Error.style.backgroundColor="rgb(14 233 61 / 29%)";
+    }
+
+    //For changing the Weather status images
+
+    let weatherStatus=document.getElementById("weatherStatus");
+    let weatherBackground=document.getElementById("weatherBackground");
+
+    let x=temp.innerHTML;
+
+    if(0 <= x && x <= 5)
+    {
+      weatherStatus.innerHTML="Very Cold";
+      document.body.style.backgroundImage = "linear-gradient(263deg, violet, transparent)";
+    }
+
+    else if(6 <= x && x <= 9)
+    {
+      weatherStatus.innerHTML="Cold";
+      document.body.style.backgroundImage = "linear-gradient(263deg, violet, transparent)";
+    }
+
+    else if(10 <= x && x <= 13)
+    {
+      weatherStatus.innerHTML="Cool";
+      document.body.style.backgroundImage = "linear-gradient(206deg, green, #8bc34a2e)";
+    }
+
+    else if(14 <= x && x <= 17)
+    {
+      weatherStatus.innerHTML="Mild";
+      document.body.style.backgroundImage = "linear-gradient(100deg, skyblue, transparent)";
+    }
+
+    else if(18 <= x && x <= 22)
+    {
+      weatherStatus.innerHTML="Moderate";
+      document.body.style.backgroundImage = "linear-gradient(-19deg, green, rgba(27, 157, 18, 0))";
+    
+    }
+
+    else if(23 <= x && x <= 26)
+    {
+      weatherStatus.innerHTML="Warm";
+      document.body.style.backgroundImage = "linear-gradient(-184deg,yellow, rgb(25 255 49 / 16%)";
+    }
+
+    else if(27 <= x && x <= 29)
+    {
+      weatherStatus.innerHTML="Very Warm";
+      document.body.style.backgroundImage = "linear-gradient(267deg,#FFEB3B, #ffeb3b00)";
+    }
+
+    else if(x>=30)
+    {
+      weatherStatus.innerHTML="Hot";
+      document.body.style.backgroundImage = "linear-gradient(267deg,red, #ffeb3b00)";
+    }
+
+    else
+    {
+      weatherStatus.innerHTML="undefined";
+    }
+
+	})
+  .catch(err => console.error(err))
+}
+
+submit.addEventListener("click",(e)=>{
+	    e.preventDefault();  //page ko reload nahi karega
+        getWeather(city.value)
+})
+getWeather("Karnataka");
+
+
+//THIS IS FOR COMMON CITIES WEATHER
+
+
+//1
+
+const options2 = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'f0a135c527mshd08f19bb895cb09p1af7c3jsnbea5c085982a',
+		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+	}
+}; 
+	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Delhi', options2)
+	.then(response => response.json())
+	.then((response) => {
+
+    temp_Delhi.innerHTML = response.temp
+    humidity_Delhi.innerHTML = response.humidity
+    min_temp_Delhi.innerHTML = response.min_temp
+		max_temp_Delhi.innerHTML = response.max_temp
+
+    console.log(response);
+	})
+
+	.catch(err => console.error(err));
+
+
+
+const options3 = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'f0a135c527mshd08f19bb895cb09p1af7c3jsnbea5c085982a',
+		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+	}
+}; 
+	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Mumbai', options3)
+	.then(response => response.json())
+	.then((response) => {
+
+    temp_Mumbai.innerHTML = response.temp
+    humidity_Mumbai.innerHTML = response.humidity
+    min_temp_Mumbai.innerHTML = response.min_temp
+		max_temp_Mumbai.innerHTML = response.max_temp
+
+    console.log(response);
+	})
+
+	.catch(err => console.error(err));
+ 
+ //2
+
+ const options4 = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'f0a135c527mshd08f19bb895cb09p1af7c3jsnbea5c085982a',
+		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+	}
+}; 
+	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Bengaluru', options4)
+	.then(response => response.json())
+	.then((response) => {
+
+    temp_Bengaluru.innerHTML = response.temp
+    humidity_Bengaluru.innerHTML = response.humidity
+    min_temp_Bengaluru.innerHTML = response.min_temp
+		max_temp_Bengaluru.innerHTML = response.max_temp
+
+    console.log(response);
+	})
+
+	.catch(err => console.error(err));
+
+  //3
+
+  const options5 = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'f0a135c527mshd08f19bb895cb09p1af7c3jsnbea5c085982a',
+		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+	}
+}; 
+	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Chennai', options5)
+	.then(response => response.json())
+	.then((response) => {
+
+    temp_Chennai.innerHTML = response.temp
+    humidity_Chennai.innerHTML = response.humidity
+    min_temp_Chennai.innerHTML = response.min_temp
+		max_temp_Chennai.innerHTML = response.max_temp
+
+    console.log(response);
+	})
+
+	.catch(err => console.error(err));
+
+  let about=document.getElementById("about");
+  let About=document.getElementById("About");
+  About.addEventListener("mouseover",()=>{
+      about.style.display="block";
+  })
+  About.addEventListener("mouseleave",()=>{
+      about.style.display="none";
+  })
+
+  about.addEventListener("mouseover",()=>{
+      about.style.display="block";
+  })
+
+  about.addEventListener("mouseleave",()=>{
+      about.style.display="none";
+  })
+
+</script>
+	
+
+
+
+ 
+
+	
+
+
